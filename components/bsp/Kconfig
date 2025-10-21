@@ -1,0 +1,34 @@
+menu "Board Support Package Configuration"
+
+    # Створюємо блок вибору з кількох опцій (radio buttons)
+    choice BOARD_REVISION
+        prompt "Board Hardware Revision"
+        default BOARD_REVISION_1
+        help
+            Select the specific hardware revision of your board.
+            This will activate the correct BSP implementation and pinout.
+
+        # Перший варіант вибору
+        config BOARD_REVISION_1
+            bool "Revision 1.0 (Main version)"
+
+        # Другий варіант вибору
+        config BOARD_REVISION_2
+            bool "Revision 2.1 (Updated display and LED pin)"
+        
+        # Можна додати третій, четвертий і т.д.
+        config BOARD_REVISION_3
+            bool "Revision 3.0 (Experimental with Ethernet)"
+
+    endchoice
+
+    # Ця опція буде доступна, тільки якщо вибрано Rev 3
+    if BOARD_REVISION_3
+        config ETH_PHY_RST_PIN
+            int "Ethernet PHY Reset Pin"
+            default 5
+            help
+                GPIO pin number for resetting the Ethernet PHY.
+    endif
+
+endmenu

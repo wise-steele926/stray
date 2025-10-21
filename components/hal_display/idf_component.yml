@@ -1,0 +1,4 @@
+## IDF Component Manager Manifest File
+dependencies:
+  lvgl/lvgl: '*'
+  espressif/esp_lvgl_port: '*'

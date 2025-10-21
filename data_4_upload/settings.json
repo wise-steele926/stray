@@ -1,0 +1,25 @@
+{
+	"volume" : 85,
+	"brightness" : {
+		"timeout": 5,
+		"level": 70
+	},
+	"name" : "ALEX",
+	"valcode" : 5,
+	"led_key" : 0, 
+	"wifi" :{
+		"0" : {
+			"ssid" : "SmartAvia",
+			"psw" : "SA2020_2019"
+		},
+		"1" : {
+			"ssid" : "kraft",
+			"psw" : "kraft512"
+		},
+		"2" : {
+			"ssid" : "Stray",
+			"psw" : "0123456789"
+		}
+	}
+}
+

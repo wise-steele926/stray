@@ -1,0 +1,184 @@
+# Kconfig for Board Support Package
+
+# Створюємо меню для налаштувань BSP
+# menu "My Radio Application Configuration"
+
+#     # Команда 'source' включає вміст іншого Kconfig файлу
+#     # Змінна $COMPONENT_DIR вказує на папку 'components'
+#     # source "$COMPONENT_DIR/bsp/Kconfig"
+    
+#     # source "$COMPONENT_DIR/service_ui/Kconfig"
+#     # ... і так далі для всіх компонентів з конфігурацією
+#     choice BOARD_REVISION
+#         prompt "Board Hardware Revision"
+#         default BOARD_REVISION_1
+#         help
+#             Select the specific hardware revision of your board.
+#             This will activate the correct BSP implementation and pinout.
+
+#         # Перший варіант вибору
+#         config BOARD_REVISION_1
+#             bool "Revision 1.0 (Main version)"
+
+#         # Другий варіант вибору
+#         config BOARD_REVISION_2
+#             bool "Revision 2.1 (Updated display and LED pin)"
+        
+#         # Можна додати третій, четвертий і т.д.
+#         config BOARD_REVISION_3
+#             bool "Revision 3.0 (Experimental with Ethernet)"
+
+#     endchoice
+
+#     # Ця опція буде доступна, тільки якщо вибрано Rev 3
+#     if BOARD_REVISION_3
+#         config ETH_PHY_RST_PIN
+#             int "Ethernet PHY Reset Pin"
+#             default 5
+#             help
+#                 GPIO pin number for resetting the Ethernet PHY.
+#     endif
+
+# endmenu # My Radio Application Configuration
+
+# Kconfig for UI Service
+
+# menu "User Interface Settings"
+
+#     config ENABLE_UI
+#         bool "Enable Graphical User Interface (LVGL)"
+#         default y # 'y' - yes, 'n' - no
+#         help
+#             If enabled, the entire UI service will be compiled and started.
+#             Disabling this saves a significant amount of flash and RAM.
+
+#     # Блок `if/endif` показує ці налаштування, тільки якщо UI ввімкнено
+#     if ENABLE_UI
+
+#         config UI_THEME_DARK
+#             bool "Use Dark Theme"
+#             default y
+#             help
+#                 Selects the default color theme for the UI.
+
+#         config UI_REFRESH_INTERVAL_MS
+#             int "UI refresh interval (ms)"
+#             default 50
+#             range 10 1000
+#             help
+#                 How often the UI task should process events.
+
+#     endif # ENABLE_UI
+
+# endmenu
+
+# # Kconfig for Network Services
+
+# menu "Network and Server Configuration"
+    
+#     config WIFI_SSID
+#         string "WiFi SSID"
+#         default "MyRadioDevice"
+#         help
+#             The SSID of the WiFi network to connect to.
+
+#     config WIFI_PASSWORD
+#         string "WiFi Password"
+#         # Для паролів краще не ставити значення за замовчуванням
+#         help
+#             The password for the WiFi network. Must be at least 8 characters.
+    
+#     config MQTT_BROKER_URL
+#         string "MQTT Broker URL"
+#         default "mqtt://192.168.1.100"
+#         help
+#             URL of the MQTT broker, e.g., mqtt://mybroker.com:1883
+
+#     config MQTT_RECONNECT_TIMEOUT_S
+#         int "MQTT Reconnect Timeout (seconds)"
+#         default 10
+#         range 5 300
+#         help
+#             Time to wait before attempting to reconnect to the MQTT broker.
+    
+#     config DEVICE_UNIQUE_ID
+#         hex "Unique Device ID (Hexadecimal)"
+#         default 0x11223344
+#         help
+#             A unique 32-bit ID for this specific device.
+
+
+# endmenu
+
+# source "../components/hal_net"
+# menu "MY WIFI"
+
+#     config ESP_WIFI_SSID
+#         string "WiFi SSID"
+#         default "myssid"
+#         help
+#             SSID (network name) for the example to connect to.
+
+#     config ESP_WIFI_PASSWORD
+#         string "WiFi Password"
+#         default "mypassword"
+#         help
+#             WiFi password (WPA or WPA2) for the example to use.
+
+#     choice ESP_WIFI_SAE_MODE
+#         prompt "WPA3 SAE mode selection"
+#         default ESP_WPA3_SAE_PWE_BOTH
+#         help
+#             Select mode for SAE as Hunt and Peck, H2E or both.
+#         config ESP_WPA3_SAE_PWE_HUNT_AND_PECK
+#             bool "HUNT AND PECK"
+#         config ESP_WPA3_SAE_PWE_HASH_TO_ELEMENT
+#             bool "H2E"
+#         config ESP_WPA3_SAE_PWE_BOTH
+#             bool "BOTH"
+#     endchoice
+
+#     config ESP_WIFI_PW_ID
+#         string "PASSWORD IDENTIFIER"
+#         depends on  ESP_WPA3_SAE_PWE_HASH_TO_ELEMENT|| ESP_WPA3_SAE_PWE_BOTH
+#         default ""
+#         help
+#             password identifier for SAE H2E
+
+#     config ESP_MAXIMUM_RETRY
+#         int "Maximum retry"
+#         default 5
+#         help
+#             Set the Maximum retry to avoid station reconnecting to the AP unlimited when the AP is really inexistent.
+
+#     choice ESP_WIFI_SCAN_AUTH_MODE_THRESHOLD
+#         prompt "WiFi Scan auth mode threshold"
+#         default ESP_WIFI_AUTH_WPA2_PSK
+#         help
+#             The weakest authmode to accept in the scan mode.
+#             This value defaults to ESP_WIFI_AUTH_WPA2_PSK incase password is present and ESP_WIFI_AUTH_OPEN is used.
+#             Please select ESP_WIFI_AUTH_WEP/ESP_WIFI_AUTH_WPA_PSK incase AP is operating in WEP/WPA mode.
+
+#         config ESP_WIFI_AUTH_OPEN
+#             bool "OPEN"
+#         config ESP_WIFI_AUTH_WEP
+#             bool "WEP"
+#         config ESP_WIFI_AUTH_WPA_PSK
+#             bool "WPA PSK"
+#         config ESP_WIFI_AUTH_WPA2_PSK
+#             bool "WPA2 PSK"
+#         config ESP_WIFI_AUTH_WPA_WPA2_PSK
+#             bool "WPA/WPA2 PSK"
+#         config ESP_WIFI_AUTH_WPA3_PSK
+#             bool "WPA3 PSK"
+#         config ESP_WIFI_AUTH_WPA2_WPA3_PSK
+#             bool "WPA2/WPA3 PSK"
+#         config ESP_WIFI_AUTH_WAPI_PSK
+#             bool "WAPI PSK"
+#     endchoice
+
+# endmenu
+# Main project Kconfig file
+# It sources Kconfig files from components to build the final menu
+
+# Створюємо головне меню для налаштувань всього додатку
